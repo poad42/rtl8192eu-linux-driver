@@ -5,6 +5,9 @@
 The official drivers for D-Link DWA-131 Rev E, with patches to keep it working on newer kernels.
 Also works on Rosewill RNX-N180UBE v2 N300 Wireless Adapter.
 
+(poad 42's edits)
+Works on the TP-LINK TL-WN823N V3 Ubuntu 18.10 Kernel Version v4.15.x
+
 **NOTE:** This is just a "mirror". I have no knowledge about this code or how it works. Expect no support from me or any contributors here. I just think GitHub is a nicer way of keeping track of this than random forum posts and precompiled binaries being sent by email. I don't want someone else to have to spend 5 days of googling and compiling with random patches until it works.
 
 ## Source for the official drivers
@@ -58,6 +61,11 @@ that it can used to rebuild the module on kernel upgrades.
     ```shell
     $ sudo dkms install rtl8192eu/1.0
     ```
+4. Add "8192eu" to /etc/modules (so that the module is loaded on boot)
+   ```shell
+    $ sudo nano /etc/modules
+    ```
+reboot and plug in the adapter it should be able to connect to wifi
 
 The Makefile is preconfigured to handle most x86/PC versions.  If you are compiling for something other than an intel x86 architecture, you need to first select the platform, e.g. for the Raspberry Pi, you need to set the I386 to n and the ARM_RPI to y:
 
